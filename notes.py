@@ -446,22 +446,22 @@ class MainWindow(QMainWindow):
         self.addToolBar(file_toolbar)
         file_menu = self.menuBar().addMenu("&File")
 
-        new_file_action = QAction(QIcon(os.path.join('images', 'ui-tab--plus.png')), "New Note", self)
+        new_file_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'ui-tab--plus.png')), "New Note", self)
         new_file_action.triggered.connect(self.new_file)
         file_menu.addAction(new_file_action)
         file_toolbar.addAction(new_file_action)
 
-        saveas_file_action = QAction(QIcon(os.path.join('images', 'disk--pencil.png')), "Export...", self)
+        saveas_file_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'disk--pencil.png')), "Export...", self)
         saveas_file_action.triggered.connect(self.file_saveas)
         file_menu.addAction(saveas_file_action)
         file_toolbar.addAction(saveas_file_action)
 
-        print_action = QAction(QIcon(os.path.join('images', 'printer.png')), "Print...", self)
+        print_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'printer.png')), "Print...", self)
         print_action.triggered.connect(self.file_print)
         file_menu.addAction(print_action)
         file_toolbar.addAction(print_action)
 
-        delete_file_action = QAction(QIcon(os.path.join('images', 'trash.gif')), "Delete Note", self)
+        delete_file_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'trash.gif')), "Delete Note", self)
         delete_file_action.triggered.connect(self.delete_file)
         file_menu.addAction(delete_file_action)
         file_toolbar.addAction(delete_file_action)
@@ -471,44 +471,44 @@ class MainWindow(QMainWindow):
         self.addToolBar(edit_toolbar)
         edit_menu = self.menuBar().addMenu("&Edit")
 
-        undo_action = QAction(QIcon(os.path.join('images', 'arrow-curve-180-left.png')), "Undo", self)
+        undo_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'arrow-curve-180-left.png')), "Undo", self)
         undo_action.triggered.connect(self.editor.undo)
         edit_toolbar.addAction(undo_action)
         edit_menu.addAction(undo_action)
 
-        redo_action = QAction(QIcon(os.path.join('images', 'arrow-curve.png')), "Redo", self)
+        redo_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'arrow-curve.png')), "Redo", self)
         redo_action.triggered.connect(self.editor.redo)
         edit_toolbar.addAction(redo_action)
         edit_menu.addAction(redo_action)
 
         edit_menu.addSeparator()
 
-        cut_action = QAction(QIcon(os.path.join('images', 'scissors.png')), "Cut", self)
+        cut_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'scissors.png')), "Cut", self)
         cut_action.setShortcut(QKeySequence.Cut)
         cut_action.triggered.connect(self.editor.cut)
         edit_toolbar.addAction(cut_action)
         edit_menu.addAction(cut_action)
 
-        copy_action = QAction(QIcon(os.path.join('images', 'document-copy.png')), "Copy", self)
+        copy_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'document-copy.png')), "Copy", self)
         cut_action.setShortcut(QKeySequence.Copy)
         copy_action.triggered.connect(self.editor.copy)
         edit_toolbar.addAction(copy_action)
         edit_menu.addAction(copy_action)
 
-        paste_action = QAction(QIcon(os.path.join('images', 'clipboard-paste-document-text.png')), "Paste", self)
+        paste_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'clipboard-paste-document-text.png')), "Paste", self)
         cut_action.setShortcut(QKeySequence.Paste)
         paste_action.triggered.connect(self.editor.paste)
         edit_toolbar.addAction(paste_action)
         edit_menu.addAction(paste_action)
 
-        select_action = QAction(QIcon(os.path.join('images', 'selection-input.png')), "Select all", self)
+        select_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'selection-input.png')), "Select all", self)
         cut_action.setShortcut(QKeySequence.SelectAll)
         select_action.triggered.connect(self.editor.selectAll)
         edit_menu.addAction(select_action)
 
         edit_menu.addSeparator()
 
-        insert_picture_action = QAction(QIcon(os.path.join('images', 'camera.png')), "Insert Picture...", self)
+        insert_picture_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'camera.png')), "Insert Picture...", self)
         insert_picture_action.triggered.connect(self.insert_picture)
         edit_menu.addAction(insert_picture_action)
 
@@ -554,21 +554,21 @@ class MainWindow(QMainWindow):
         self.spinColEdit.setCurrentColor(self._color)
         format_toolbar.addWidget(self.previewPanel)
 
-        self.bold_action = QAction(QIcon(os.path.join('images', 'edit-bold.png')), "Bold", self)
+        self.bold_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-bold.png')), "Bold", self)
         self.bold_action.setShortcut(QKeySequence.Bold)
         self.bold_action.setCheckable(True)
         self.bold_action.toggled.connect(lambda x: self.editor.setFontWeight(QFont.Bold if x else QFont.Normal))
         format_toolbar.addAction(self.bold_action)
         format_menu.addAction(self.bold_action)
 
-        self.italic_action = QAction(QIcon(os.path.join('images', 'edit-italic.png')), "Italic", self)
+        self.italic_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-italic.png')), "Italic", self)
         self.italic_action.setShortcut(QKeySequence.Italic)
         self.italic_action.setCheckable(True)
         self.italic_action.toggled.connect(self.editor.setFontItalic)
         format_toolbar.addAction(self.italic_action)
         format_menu.addAction(self.italic_action)
 
-        self.underline_action = QAction(QIcon(os.path.join('images', 'edit-underline.png')), "Underline", self)
+        self.underline_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-underline.png')), "Underline", self)
         self.underline_action.setShortcut(QKeySequence.Underline)
         self.underline_action.setCheckable(True)
         self.underline_action.toggled.connect(self.editor.setFontUnderline)
@@ -577,25 +577,25 @@ class MainWindow(QMainWindow):
 
         format_menu.addSeparator()
 
-        self.alignl_action = QAction(QIcon(os.path.join('images', 'edit-alignment.png')), "Align left", self)
+        self.alignl_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-alignment.png')), "Align left", self)
         self.alignl_action.setCheckable(True)
         self.alignl_action.triggered.connect(lambda: self.editor.setAlignment(Qt.AlignLeft))
         format_toolbar.addAction(self.alignl_action)
         format_menu.addAction(self.alignl_action)
 
-        self.alignc_action = QAction(QIcon(os.path.join('images', 'edit-alignment-center.png')), "Align center", self)
+        self.alignc_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-alignment-center.png')), "Align center", self)
         self.alignc_action.setCheckable(True)
         self.alignc_action.triggered.connect(lambda: self.editor.setAlignment(Qt.AlignCenter))
         format_toolbar.addAction(self.alignc_action)
         format_menu.addAction(self.alignc_action)
 
-        self.alignr_action = QAction(QIcon(os.path.join('images', 'edit-alignment-right.png')), "Align right", self)
+        self.alignr_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-alignment-right.png')), "Align right", self)
         self.alignr_action.setCheckable(True)
         self.alignr_action.triggered.connect(lambda: self.editor.setAlignment(Qt.AlignRight))
         format_toolbar.addAction(self.alignr_action)
         format_menu.addAction(self.alignr_action)
 
-        self.alignj_action = QAction(QIcon(os.path.join('images', 'edit-alignment-justify.png')), "Justify", self)
+        self.alignj_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'edit-alignment-justify.png')), "Justify", self)
         self.alignj_action.setCheckable(True)
         self.alignj_action.triggered.connect(lambda: self.editor.setAlignment(Qt.AlignJustify))
         format_toolbar.addAction(self.alignj_action)
@@ -608,7 +608,7 @@ class MainWindow(QMainWindow):
         format_group.addAction(self.alignr_action)
         format_group.addAction(self.alignj_action)
 
-        about_action = QAction(QIcon(os.path.join('images', 'question.png')), "About File", self)
+        about_action = QAction(QIcon(os.path.join(PROGRAM_LOCATION, 'images', 'question.png')), "About File", self)
         about_action.triggered.connect(self.about)
         format_toolbar.addAction(about_action)
 
